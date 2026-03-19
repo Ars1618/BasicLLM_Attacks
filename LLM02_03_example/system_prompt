@@ -1,0 +1,15 @@
+FROM ./fine-turning-model
+# Или полный путь: FROM /Users/ars/.../fine-turning-model
+
+# Шаблон чата для Qwen2 (обязательно, иначе ответы будут странные)
+TEMPLATE """<|im_start|>system
+{{ .System }}<|im_end|>
+<|im_start|>user
+{{ .Prompt }}<|im_end|>
+<|im_start|>assistant
+"""
+
+# Параметры (по желанию, можно потом менять)
+PARAMETER temperature 0.7
+PARAMETER top_p 0.9
+PARAMETER num_ctx 4096
